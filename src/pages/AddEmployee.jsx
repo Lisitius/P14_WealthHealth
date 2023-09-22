@@ -1,5 +1,3 @@
-import React from "react";
-
 const AddEmployee = () => {
   return (
     <div className="min-h-screen flex items-center justify-center">

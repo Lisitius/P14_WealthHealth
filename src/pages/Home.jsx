@@ -1,9 +1,10 @@
-import React from "react";
+import EmployeeTable from "../components/EmployeeTable";
 
 const Home = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <h1 className="text-3xl font-bold">HELLO WORLD LIST</h1>
+    <div className="flex flex-col items-center justify-center">
+      <h1 className="text-3xl font-bold mb-5 mt-5">Employee List</h1>{" "}
+      <EmployeeTable />
     </div>
   );
 };
