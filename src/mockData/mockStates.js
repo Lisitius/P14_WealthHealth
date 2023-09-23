@@ -1,4 +1,4 @@
-export const states = [
+export const mockStates = [
   {
     name: "Alabama",
     abbreviation: "AL",

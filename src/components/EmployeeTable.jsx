@@ -8,7 +8,7 @@ const EmployeeTable = () => {
     useEmployeeTable();
 
   return (
-    <div className="ag-theme-alpine" style={{ width: "90%" }}>
+    <div className="ag-theme-alpine font-custom" style={{ width: "90%" }}>
       <input
         type="text"
         onChange={onFilterTextChange}

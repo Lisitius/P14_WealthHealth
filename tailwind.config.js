@@ -7,6 +7,9 @@ module.exports = {
         customGreen: "#93AD18", // remplacez par votre code couleur
       },
     },
+    fontFamily: {
+      custom: ["Poppins"],
+    },
   },
   plugins: [],
 };
