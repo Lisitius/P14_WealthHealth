@@ -1,5 +1,6 @@
-import { useRef } from "react";
-import { mockEmployees } from "../mockData/mockEmployee";
+import { useRef, useEffect, useState } from "react";
+import { db } from "../firebase";
+import "firebase/compat/firestore";
 
 const useEmployeeTable = () => {
   const columns = [
@@ -16,6 +17,8 @@ const useEmployeeTable = () => {
 
   const gridApiRef = useRef(null);
 
+  const [employees, setEmployees] = useState([]);
+
   const onGridReady = (params) => {
     gridApiRef.current = params.api;
   };
@@ -24,9 +27,17 @@ const useEmployeeTable = () => {
     gridApiRef.current.setQuickFilter(event.target.value);
   };
 
+  useEffect(() => {
+    const unsub = db.collection("Employee").onSnapshot((snapshot) => {
+      const employees = snapshot.docs.map((doc) => doc.data());
+      setEmployees(employees);
+    });
+    return unsub;
+  }, []);
+
   return {
     columns,
-    rowData: mockEmployees,
+    rowData: employees,
     onGridReady,
     onFilterTextChange,
   };
