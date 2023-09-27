@@ -4,4 +4,5 @@ export const mockDepartment = [
   "Engineering",
   "Human Resources",
   "Legal",
+  "Finance",
 ];
