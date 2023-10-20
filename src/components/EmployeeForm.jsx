@@ -2,6 +2,7 @@ import { mockStates } from "../mockData/mockStates";
 import { mockDepartment } from "../mockData/mockDepartment";
 import useEmployeeForm from "../hooks/useEmployeeForm";
 import { Dropdown } from "p14-package-dropdown-wealth-health";
+import ReactModal from "react-modal";
 
 const EmployeeForm = () => {
   const {
@@ -9,7 +10,8 @@ const EmployeeForm = () => {
     handleInputChange,
     handleSubmit,
     formErrors,
-    isSuccess,
+    isModalOpen,
+    setIsModalOpen,
   } = useEmployeeForm({
     firstName: "",
     lastName: "",
@@ -22,14 +24,30 @@ const EmployeeForm = () => {
     state: "",
   });
 
+  const modalStyle = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+    },
+  };
+
   return (
     <div className="mt-2 w-1/2 mx-auto p-4 shadow-lg font-custom">
       <h2 className="text-2xl font-bold mb-5 text-center">Add Employee</h2>
-      {isSuccess && (
-        <div className="bg-green-900 text-white text-center p-2 mb-4 rounded">
-          Employee added successfully!
-        </div>
-      )}
+      {/* Modal */}
+      <ReactModal
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        style={modalStyle}
+        contentLabel="Employé ajouté"
+      >
+        <h2>Employé ajouté avec succès</h2>
+        <button onClick={() => setIsModalOpen(false)}>Fermer</button>
+      </ReactModal>
       <div className="grid grid-cols-2 gap-4">
         {/* Employee Identity Part */}
         <div>
@@ -137,7 +155,7 @@ const EmployeeForm = () => {
           </div>
         </div>
       </div>
-s
+
       {/* Party Address Employee */}
       <div className="mb-3">
         <h3 className="text-lg font-semibold mb-3">Employee address</h3>
