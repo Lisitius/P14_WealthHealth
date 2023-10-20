@@ -5,6 +5,7 @@ const useEmployeeForm = (initialState) => {
   const [employeeData, setEmployeeData] = useState(initialState);
   const [isSuccess, setIsSuccess] = useState(false);
   const [formErrors, setFormErrors] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -17,11 +18,8 @@ const useEmployeeForm = (initialState) => {
   const handleSave = () => {
     db.collection("Employee").add(employeeData);
     setEmployeeData(initialState);
-    console.log("Employee data:", employeeData);
     setIsSuccess(true);
-    setTimeout(() => {
-      setIsSuccess(false);
-    }, 7000);
+    setIsModalOpen(true);
   };
 
   const handleSubmit = (event) => {
@@ -67,6 +65,8 @@ const useEmployeeForm = (initialState) => {
     handleSubmit,
     isSuccess,
     formErrors,
+    isModalOpen,
+    setIsModalOpen,
   };
 };
 
