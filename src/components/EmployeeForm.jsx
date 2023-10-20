@@ -1,6 +1,7 @@
 import { mockStates } from "../mockData/mockStates";
 import { mockDepartment } from "../mockData/mockDepartment";
 import useEmployeeForm from "../hooks/useEmployeeForm";
+import { Dropdown } from "p14-package-dropdown-wealth-health";
 
 const EmployeeForm = () => {
   const {
@@ -120,36 +121,23 @@ const EmployeeForm = () => {
               </p>
             )}
           </div>
+          {/* department */}
           <div className="mb-3">
-            {/* department */}
             <label htmlFor="department" className="block mb-2">
               Department
             </label>
-            <select
+            <Dropdown
               name="department"
-              id="department"
               value={employeeData.department}
               onChange={handleInputChange}
-              className={`w-full p-2 border-solid border border-black rounded ${
-                formErrors.department ? "border-red-500" : ""
-              }`}
-            >
-              <option value="">Select Department</option>
-              {mockDepartment.map((dept, index) => (
-                <option key={index} value={dept}>
-                  {dept}
-                </option>
-              ))}
-            </select>
-            {formErrors.department && (
-              <p className="text-red-500 text-sm mt-1">
-                {formErrors.department}
-              </p>
-            )}
+              formErrors={formErrors}
+              options={mockDepartment.map((dept) => ({ value: dept }))}
+              defaultOption="Select Department"
+            />
           </div>
         </div>
       </div>
-
+s
       {/* Party Address Employee */}
       <div className="mb-3">
         <h3 className="text-lg font-semibold mb-3">Employee address</h3>
@@ -215,25 +203,16 @@ const EmployeeForm = () => {
           <label htmlFor="state" className="block mb-2">
             State
           </label>
-          <select
+          <Dropdown
             name="state"
-            id="state"
             value={employeeData.state}
             onChange={handleInputChange}
-            className={`w-full p-2 border-solid border border-black rounded ${
-              formErrors.state ? "border-red-500" : ""
-            }`}
-          >
-            <option value="">Select state</option>
-            {mockStates.map((state, index) => (
-              <option key={index} value={state.abbreviation}>
-                {state.name}
-              </option>
-            ))}
-          </select>
-          {formErrors.state && (
-            <p className="text-red-500 text-sm mt-1">{formErrors.state}</p>
-          )}
+            options={mockStates.map((state) => ({
+              value: state.name,
+            }))}
+            defaultOption="Select state"
+            formErrors={formErrors}
+          />
         </div>
       </div>
 

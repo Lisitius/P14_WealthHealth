@@ -33,14 +33,23 @@ const useEmployeeForm = (initialState) => {
     if (employeeData.lastName.length < 3) {
       errors.lastName = "Last Name must be at least 3 characters long";
     }
+    if (!employeeData.dateOfBirth) {
+      errors.dateOfBirth = "Date of Birth is required";
+    }
+    if (!employeeData.startDate) {
+      errors.startDate = "Start Date is required";
+    }
+    if (employeeData.department.length < 3) {
+      errors.department = "Department is required";
+    }
     if (employeeData.street.length < 6) {
       errors.street = "Street must be at least 6 characters long";
     }
     if (employeeData.city.length < 2) {
       errors.city = "City must be at least 2 characters long";
     }
-    if (!employeeData.dateOfBirth) {
-      errors.dateOfBirth = "Date of Birth is required";
+    if (!employeeData.zipCode) {
+      errors.zipCode = "Zip Code is required";
     }
     if (!employeeData.state) {
       errors.state = "State is required";
