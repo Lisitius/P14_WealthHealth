@@ -32,6 +32,12 @@ const EmployeeForm = () => {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
+      border: "1px solid black",
+      padding: "5px",
+      fontWeight: "bold",
+      backgroundColor: "#93ad18",
+      fontSize: "30px",
+      marginBottom: "5px",
     },
   };
 
@@ -45,8 +51,13 @@ const EmployeeForm = () => {
         style={modalStyle}
         contentLabel="Employé ajouté"
       >
-        <h2>Employé ajouté avec succès</h2>
-        <button onClick={() => setIsModalOpen(false)}>Fermer</button>
+        <h2 className="text-white">Employé ajouté avec succès</h2>
+        <button
+          className="font-normal text-xl text-black"
+          onClick={() => setIsModalOpen(false)}
+        >
+          Fermer
+        </button>
       </ReactModal>
       <div className="grid grid-cols-2 gap-4">
         {/* Employee Identity Part */}
