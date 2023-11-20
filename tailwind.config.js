@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {
-        customGreen: "#93AD18", // remplacez par votre code couleur
+        customGreen: "#93AD18",
       },
     },
     fontFamily: {
