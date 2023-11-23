@@ -15,6 +15,7 @@ const initialState = {
   formErrors: {},
   isSuccess: false,
   isModalOpen: false,
+  employees: [],
 };
 
 export const employeeSlice = createSlice({
@@ -42,6 +43,9 @@ export const employeeSlice = createSlice({
       state.formErrors = {};
       state.isSuccess = false;
     },
+    addEmployee: (state, action) => {
+      state.employees.push(action.payload);
+    },
   },
 });
 
@@ -51,6 +55,7 @@ export const {
   setSuccess,
   toggleModal,
   resetEmployeeForm,
+  addEmployee,
 } = employeeSlice.actions;
 
 export default employeeSlice.reducer;
