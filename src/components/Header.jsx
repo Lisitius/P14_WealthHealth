@@ -5,7 +5,7 @@ function Header() {
 
   return (
     <div className="bg-customGreen p-4 flex items-center justify-between font-custom">
-      <div className="text-3xl text-gray-800 font-semibold">Wealth Health</div>
+      <div className="text-lg text-gray-800 font-semibold">Wealth Health</div>
       <nav className="flex space-x-4">
         <NavLink
           to="/"

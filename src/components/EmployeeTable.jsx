@@ -8,7 +8,10 @@ const EmployeeTable = () => {
     useEmployeeTable();
 
   return (
-    <div className="ag-theme-alpine font-custom" style={{ width: "90%" }}>
+    <div
+      className="ag-theme-alpine font-custom"
+      style={{ width: "90%", height: "700px" }}
+    >
       <input
         type="text"
         onChange={onFilterTextChange}
@@ -18,9 +21,9 @@ const EmployeeTable = () => {
       <AgGridReact
         columnDefs={columns}
         rowData={rowData}
-        domLayout="autoHeight"
+        domLayout="normal"
         pagination={true}
-        paginationPageSize={15}
+        paginationPageSize={10}
         onGridReady={onGridReady}
       />
     </div>
