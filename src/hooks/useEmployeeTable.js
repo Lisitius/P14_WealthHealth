@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
-import "firebase/compat/firestore";
 
 const useEmployeeTable = () => {
-  // Définition des colonnes du tableau
   const columns = [
     { headerName: "First Name", field: "firstName", flex: 1 },
     { headerName: "Last Name", field: "lastName", flex: 1 },
@@ -19,9 +17,13 @@ const useEmployeeTable = () => {
   const [employees, setEmployees] = useState([]);
 
   const fetchEmployees = async () => {
-    const snapshot = await db.collection("Employee").get();
-    const employeesData = snapshot.docs.map((doc) => doc.data());
-    setEmployees(employeesData);
+    try {
+      const snapshot = await db.collection("Employee").get();
+      const employeesData = snapshot.docs.map((doc) => doc.data());
+      setEmployees(employeesData);
+    } catch (error) {
+      console.error("Erreur lors de la récupération des employés:", error);
+    }
   };
 
   useEffect(() => {

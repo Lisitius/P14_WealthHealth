@@ -26,15 +26,6 @@ const EmployeeTable = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [searchValue, setSearchValue] = useState("");
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
   const filteredRows = rowData.filter((row) =>
     Object.keys(row).some(
       (key) =>
@@ -47,7 +38,7 @@ const EmployeeTable = () => {
       <TextField
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
-        label="Search by Name or LastName"
+        label="Search employee, date, city..."
         variant="outlined"
         style={{ margin: "10px", height: "40px" }}
         InputProps={{
@@ -85,8 +76,11 @@ const EmployeeTable = () => {
         count={rowData.length}
         rowsPerPage={rowsPerPage}
         page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
+        onPageChange={(newPage) => setPage(newPage)}
+        onRowsPerPageChange={(event) => {
+          setRowsPerPage(parseInt(event.target.value, 10));
+          setPage(0);
+        }}
       />
     </Paper>
   );
