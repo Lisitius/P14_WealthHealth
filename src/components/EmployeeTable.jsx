@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Table,
   TableBody,
@@ -11,12 +11,18 @@ import {
 } from "@mui/material";
 import useEmployeeTable from "../hooks/useEmployeeTable";
 
+const EmployeeTableRow = ({ row, columns }) => (
+  <TableRow hover role="checkbox" tabIndex={-1}>
+    {columns.map((column) => (
+      <TableCell key={column.field}>{row[column.field]}</TableCell>
+    ))}
+  </TableRow>
+);
+
 const EmployeeTable = () => {
   const { columns, rowData } = useEmployeeTable();
-
-  // Gestion de la pagination
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -28,9 +34,9 @@ const EmployeeTable = () => {
   };
 
   return (
-    <Paper style={{ width: "90%" }}>
+    <Paper sx={{ width: "90%" }}>
       <TableContainer>
-        <Table stickyHeader aria-label="sticky table">
+        <Table stickyHeader aria-label="Employee Table">
           <TableHead>
             <TableRow>
               {columns.map((column) => (
@@ -41,16 +47,9 @@ const EmployeeTable = () => {
           <TableBody>
             {rowData
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                    {columns.map((column) => {
-                      const value = row[column.field];
-                      return <TableCell key={column.field}>{value}</TableCell>;
-                    })}
-                  </TableRow>
-                );
-              })}
+              .map((row, index) => (
+                <EmployeeTableRow key={index} row={row} columns={columns} />
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
