@@ -5,11 +5,11 @@ function Header() {
 
   return (
     <div className="bg-customGreen p-4 flex items-center justify-between font-custom">
-      <div className="text-3xl text-white font-semibold">Wealth Health</div>
+      <div className="text-3xl text-gray-800 font-semibold">Wealth Health</div>
       <nav className="flex space-x-4">
         <NavLink
           to="/"
-          className={`text-white text-lg ${
+          className={`text-gray-800 text-lg ${
             location.pathname === "/" ? "underline" : ""
           }`}
           end
@@ -18,7 +18,7 @@ function Header() {
         </NavLink>
         <NavLink
           to="/add"
-          className={`text-white text-lg ${
+          className={`text-gray-800 text-lg ${
             location.pathname === "/add" ? "underline" : ""
           }`}
         >
