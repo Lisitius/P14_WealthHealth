@@ -3,26 +3,18 @@ import { mockDepartment } from "../mockData/mockDepartment";
 import useEmployeeForm from "../hooks/useEmployeeForm";
 import { Dropdown } from "p14-package-dropdown-wealth-health";
 import ReactModal from "react-modal";
+import { useDispatch } from "react-redux";
+import { toggleModal } from "../app/features/employeeSlice";
 
 const EmployeeForm = () => {
+  const dispatch = useDispatch();
   const {
     employeeData,
     handleInputChange,
     handleSubmit,
     formErrors,
     isModalOpen,
-    setIsModalOpen,
-  } = useEmployeeForm({
-    firstName: "",
-    lastName: "",
-    dateOfBirth: "",
-    startDate: "",
-    department: "",
-    street: "",
-    city: "",
-    zipCode: "",
-    state: "",
-  });
+  } = useEmployeeForm();
 
   const modalStyle = {
     content: {
@@ -41,21 +33,22 @@ const EmployeeForm = () => {
     },
   };
 
+  const closeModal = () => {
+    dispatch(toggleModal());
+  };
+
   return (
     <div className="mt-2 w-1/2 mx-auto p-4 shadow-lg font-custom">
       <h2 className="text-2xl font-bold mb-5 text-center">Add Employee</h2>
       {/* Modal */}
       <ReactModal
         isOpen={isModalOpen}
-        onRequestClose={() => setIsModalOpen(false)}
+        onRequestClose={closeModal}
         style={modalStyle}
         contentLabel="Employé ajouté"
       >
         <h2 className="text-white">Employé ajouté avec succès</h2>
-        <button
-          className="font-normal text-xl text-black"
-          onClick={() => setIsModalOpen(false)}
-        >
+        <button className="font-normal text-xl text-black" onClick={closeModal}>
           Fermer
         </button>
       </ReactModal>

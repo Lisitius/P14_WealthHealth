@@ -1,29 +1,25 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setEmployeeData,
+  setFormErrors,
+  setSuccess,
+  toggleModal,
+  resetEmployeeForm,
+} from "../app/features/employeeSlice";
 import { db } from "../firebase";
 
-const useEmployeeForm = (initialState) => {
-  const [employeeData, setEmployeeData] = useState(initialState);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [formErrors, setFormErrors] = useState({});
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const useEmployeeForm = () => {
+  const dispatch = useDispatch();
+  const { employeeData, formErrors, isSuccess, isModalOpen } = useSelector(
+    (state) => state.employee
+  );
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setEmployeeData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    dispatch(setEmployeeData({ ...employeeData, [name]: value }));
   };
 
-  const handleSave = () => {
-    db.collection("Employee").add(employeeData);
-    setEmployeeData(initialState);
-    setIsSuccess(true);
-    setIsModalOpen(true);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const validateForm = () => {
     const errors = {};
     if (employeeData.firstName.length < 3) {
       errors.firstName = "First Name must be at least 3 characters long";
@@ -52,21 +48,30 @@ const useEmployeeForm = (initialState) => {
     if (!employeeData.state) {
       errors.state = "State is required";
     }
-    setFormErrors(errors);
-    if (Object.keys(errors).length === 0) {
-      handleSave();
+
+    dispatch(setFormErrors(errors));
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const isFormValid = validateForm();
+
+    if (isFormValid) {
+      db.collection("Employee").add(employeeData);
+      dispatch(setSuccess(true));
+      dispatch(toggleModal());
+      dispatch(resetEmployeeForm());
     }
   };
 
   return {
     employeeData,
     handleInputChange,
-    handleSave,
     handleSubmit,
-    isSuccess,
     formErrors,
+    isSuccess,
     isModalOpen,
-    setIsModalOpen,
   };
 };
 
