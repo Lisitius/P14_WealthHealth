@@ -1,8 +1,9 @@
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import "firebase/compat/firestore";
 
 const useEmployeeTable = () => {
+  // Définition des colonnes du tableau
   const columns = [
     { headerName: "First Name", field: "firstName", flex: 1 },
     { headerName: "Last Name", field: "lastName", flex: 1 },
@@ -15,31 +16,21 @@ const useEmployeeTable = () => {
     { headerName: "Zip Code", field: "zipCode", flex: 1 },
   ];
 
-  const gridApiRef = useRef(null);
-
   const [employees, setEmployees] = useState([]);
 
-  const onGridReady = (params) => {
-    gridApiRef.current = params.api;
-  };
-
-  const onFilterTextChange = (event) => {
-    gridApiRef.current.setQuickFilter(event.target.value);
+  const fetchEmployees = async () => {
+    const snapshot = await db.collection("Employee").get();
+    const employeesData = snapshot.docs.map((doc) => doc.data());
+    setEmployees(employeesData);
   };
 
   useEffect(() => {
-    const unsub = db.collection("Employee").onSnapshot((snapshot) => {
-      const employees = snapshot.docs.map((doc) => doc.data());
-      setEmployees(employees);
-    });
-    return unsub;
+    fetchEmployees();
   }, []);
 
   return {
     columns,
     rowData: employees,
-    onGridReady,
-    onFilterTextChange,
   };
 };
 
