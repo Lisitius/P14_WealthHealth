@@ -33,6 +33,7 @@ const EmployeeTable = () => {
         row[key].toString().toLowerCase().includes(searchValue.toLowerCase())
     )
   );
+
   return (
     <Paper sx={{ width: "90%" }}>
       <TextField
@@ -73,7 +74,7 @@ const EmployeeTable = () => {
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={rowData.length}
+        count={filteredRows.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={(newPage) => setPage(newPage)}

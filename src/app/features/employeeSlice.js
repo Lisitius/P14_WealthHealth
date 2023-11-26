@@ -18,6 +18,10 @@ const initialState = {
   employees: [],
 };
 
+const saveEmployeesToSessionStorage = (employees) => {
+  sessionStorage.setItem("employees", JSON.stringify(employees));
+};
+
 export const employeeSlice = createSlice({
   name: "employee",
   initialState,
@@ -45,6 +49,7 @@ export const employeeSlice = createSlice({
     },
     addEmployee: (state, action) => {
       state.employees.push(action.payload);
+      saveEmployeesToSessionStorage(state.employees);
     },
   },
 });

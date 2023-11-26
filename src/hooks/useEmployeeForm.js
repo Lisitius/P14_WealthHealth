@@ -7,7 +7,6 @@ import {
   resetEmployeeForm,
   addEmployee,
 } from "../app/features/employeeSlice";
-// import { db } from "../firebase";
 
 const useEmployeeForm = () => {
   const dispatch = useDispatch();
