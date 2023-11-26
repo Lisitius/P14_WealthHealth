@@ -77,7 +77,7 @@ const EmployeeTable = () => {
         count={filteredRows.length}
         rowsPerPage={rowsPerPage}
         page={page}
-        onPageChange={(newPage) => setPage(newPage)}
+        onPageChange={(event, newPage) => setPage(newPage)}
         onRowsPerPageChange={(event) => {
           setRowsPerPage(parseInt(event.target.value, 10));
           setPage(0);

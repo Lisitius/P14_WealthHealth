@@ -16,7 +16,17 @@ const useEmployeeForm = () => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    dispatch(setEmployeeData({ ...employeeData, [name]: value }));
+    let formattedValue = value;
+    if (name === "dateOfBirth" || name === "startDate") {
+      formattedValue = formatDate(value);
+    }
+    dispatch(setEmployeeData({ ...employeeData, [name]: formattedValue }));
+  };
+
+  const formatDate = (dateString) => {
+    if (!dateString) return "";
+    const [year, month, day] = dateString.split("-");
+    return `${day}-${month}-${year}`;
   };
 
   const validateForm = () => {
