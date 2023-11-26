@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { db } from "../firebase";
+import { employees as mockEmployees } from "../mockData/mockEmployee";
 
 const useEmployeeTable = () => {
   const columns = [
@@ -16,20 +16,14 @@ const useEmployeeTable = () => {
 
   const [employees, setEmployees] = useState([]);
 
-  const fetchEmployees = async () => {
-    try {
-      const snapshot = await db.collection("Employee").get();
-      const employeesData = snapshot.docs.map((doc) => doc.data());
-      setEmployees(employeesData);
-    } catch (error) {
-      console.error("Erreur lors de la récupération des employés:", error);
-    }
-  };
-
   useEffect(() => {
-    fetchEmployees();
+    const storedEmployees =
+      JSON.parse(sessionStorage.getItem("employees")) || [];
+    const combinedEmployees = [
+      ...new Set([...storedEmployees, ...mockEmployees]),
+    ];
+    setEmployees(combinedEmployees);
   }, []);
-
   return {
     columns,
     rowData: employees,

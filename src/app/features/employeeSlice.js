@@ -15,6 +15,11 @@ const initialState = {
   formErrors: {},
   isSuccess: false,
   isModalOpen: false,
+  employees: [],
+};
+
+const saveEmployeesToSessionStorage = (employees) => {
+  sessionStorage.setItem("employees", JSON.stringify(employees));
 };
 
 export const employeeSlice = createSlice({
@@ -42,6 +47,10 @@ export const employeeSlice = createSlice({
       state.formErrors = {};
       state.isSuccess = false;
     },
+    addEmployee: (state, action) => {
+      state.employees.push(action.payload);
+      saveEmployeesToSessionStorage(state.employees);
+    },
   },
 });
 
@@ -51,6 +60,7 @@ export const {
   setSuccess,
   toggleModal,
   resetEmployeeForm,
+  addEmployee,
 } = employeeSlice.actions;
 
 export default employeeSlice.reducer;

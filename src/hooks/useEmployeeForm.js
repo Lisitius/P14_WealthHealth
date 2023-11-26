@@ -5,8 +5,8 @@ import {
   setSuccess,
   toggleModal,
   resetEmployeeForm,
+  addEmployee,
 } from "../app/features/employeeSlice";
-import { db } from "../firebase";
 
 const useEmployeeForm = () => {
   const dispatch = useDispatch();
@@ -58,7 +58,7 @@ const useEmployeeForm = () => {
     const isFormValid = validateForm();
 
     if (isFormValid) {
-      db.collection("Employee").add(employeeData);
+      dispatch(addEmployee(employeeData));
       dispatch(setSuccess(true));
       dispatch(toggleModal());
       dispatch(resetEmployeeForm());
