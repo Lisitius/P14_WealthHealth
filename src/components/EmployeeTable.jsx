@@ -12,11 +12,21 @@ import {
 } from "@mui/material";
 import useEmployeeTable from "../hooks/useEmployeeTable";
 
+const formatDate = (dateString) => {
+  if (!dateString) return "";
+  const date = new Date(dateString);
+  return new Intl.DateTimeFormat("fr-FR").format(date);
+};
+
 const EmployeeTableRow = ({ row, columns }) => (
   <TableRow hover role="checkbox" tabIndex={-1}>
-    {columns.map((column) => (
-      <TableCell key={column.field}>{row[column.field]}</TableCell>
-    ))}
+    {columns.map((column) => {
+      const value =
+        column.field === "dateOfBirth" || column.field === "startDate"
+          ? formatDate(row[column.field])
+          : row[column.field];
+      return <TableCell key={column.field}>{value}</TableCell>;
+    })}
   </TableRow>
 );
 

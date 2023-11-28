@@ -5,6 +5,8 @@ import { Dropdown } from "p14-package-dropdown-wealth-health";
 import ReactModal from "react-modal";
 import { useDispatch } from "react-redux";
 import { toggleModal } from "../app/features/employeeSlice";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const EmployeeForm = () => {
   const dispatch = useDispatch();
@@ -101,12 +103,18 @@ const EmployeeForm = () => {
             <label htmlFor="dateOfBirth" className="block mb-2">
               Date of Birth
             </label>
-            <input
-              type="date"
-              name="dateOfBirth"
-              id="dateOfBirth"
-              value={employeeData.dateOfBirth}
-              onChange={handleInputChange}
+            <DatePicker
+              selected={
+                employeeData.dateOfBirth
+                  ? new Date(employeeData.dateOfBirth)
+                  : null
+              }
+              onChange={(date) =>
+                handleInputChange({
+                  target: { name: "dateOfBirth", value: date },
+                })
+              }
+              dateFormat="dd/MM/yyyy"
               className={`w-full p-2 border-solid border border-black rounded ${
                 formErrors.dateOfBirth ? "border-red-500" : ""
               }`}
@@ -127,12 +135,16 @@ const EmployeeForm = () => {
             <label htmlFor="startDate" className="block mb-2">
               Start Date
             </label>
-            <input
-              type="date"
-              name="startDate"
-              id="startDate"
-              value={employeeData.startDate}
-              onChange={handleInputChange}
+            <DatePicker
+              selected={
+                employeeData.startDate ? new Date(employeeData.startDate) : null
+              }
+              onChange={(date) =>
+                handleInputChange({
+                  target: { name: "startDate", value: date },
+                })
+              }
+              dateFormat="dd/MM/yyyy"
               className={`w-full p-2 border-solid border border-black rounded ${
                 formErrors.startDate ? "border-red-500" : ""
               }`}
