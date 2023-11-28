@@ -19,15 +19,15 @@ https://mellow-youtiao-fa80bd.netlify.app/
 
 ## Lighthouse Test
 
-[JQUERY FORM](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_jquery_addpage.png)
-[JQUERY EMPLOYEES](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_jquery_table.png)
-[REACT FORM](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_react_addpage.png)
+[JQUERY FORM](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_jquery_addpage.png)  
+[JQUERY EMPLOYEES](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_jquery_table.png)  
+[REACT FORM](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_react_addpage.png)  
 [REACT EMPLOYEES](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_react_home.png)
 
 ## Existing plugins
 
-[Mui react table](https://mui.com/material-ui/react-table/)
-[React-modal](https://www.npmjs.com/package/react-modal)
+[Mui react table](https://mui.com/material-ui/react-table/)  
+[React-modal](https://www.npmjs.com/package/react-modal)  
 [React-datepicker](https://www.npmjs.com/package/react-datepicker)
 
 ## Plugin created
