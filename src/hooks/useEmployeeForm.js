@@ -13,6 +13,7 @@ const useEmployeeForm = () => {
   const { employeeData, formErrors, isSuccess, isModalOpen } = useSelector(
     (state) => state.employee
   );
+  const streetRegex = /^[0-9]+\s\w+\s\w+/;
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -27,8 +28,19 @@ const useEmployeeForm = () => {
     if (employeeData.lastName.length < 3) {
       errors.lastName = "Last Name must be at least 3 characters long";
     }
-    if (!employeeData.dateOfBirth) {
-      errors.dateOfBirth = "Date of Birth is required";
+    if (employeeData.dateOfBirth) {
+      const dob = new Date(employeeData.dateOfBirth);
+      const today = new Date();
+      let age = today.getFullYear() - dob.getFullYear();
+      const m = today.getMonth() - dob.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+        age--;
+      }
+      if (age < 18) {
+        errors.dateOfBirth = "L'âge doit être d'au moins 18 ans";
+      }
+    } else {
+      errors.dateOfBirth = "Date de naissance requise";
     }
     if (!employeeData.startDate) {
       errors.startDate = "Start Date is required";
@@ -36,13 +48,18 @@ const useEmployeeForm = () => {
     if (employeeData.department.length < 3) {
       errors.department = "Department is required";
     }
-    if (employeeData.street.length < 6) {
+    if (!streetRegex.test(employeeData.street)) {
+      errors.street = 'Le format doit être le suivant "123 nom rue"';
+    } else if (employeeData.street.length < 6) {
       errors.street = "Street must be at least 6 characters long";
     }
+
     if (employeeData.city.length < 2) {
       errors.city = "City must be at least 2 characters long";
     }
-    if (!employeeData.zipCode) {
+    if (!/^\d+$/.test(employeeData.zipCode)) {
+      errors.zipCode = "Chiffre ou nombre uniquement";
+    } else if (!employeeData.zipCode) {
       errors.zipCode = "Zip Code is required";
     }
     if (!employeeData.state) {
