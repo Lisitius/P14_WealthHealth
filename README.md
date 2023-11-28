@@ -9,7 +9,7 @@
 
 ## Demo
 
-https://tangerine-narwhal-eeacea.netlify.app/
+https://regal-bombolone-2a404e.netlify.app/
 
 ## Tasks
 
@@ -21,8 +21,8 @@ https://tangerine-narwhal-eeacea.netlify.app/
 
 [JQUERY FORM](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_jquery_addpage.png)
 [JQUERY EMPLOYEES](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_jquery_table.png)
-[REACT FORM](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_react_addpage.png)
-[REACT EMPLOYEES](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_react_home.png)
+[REACT FORM](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_react_addform.png)
+[REACT EMPLOYEES](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_react_tablepage.png)
 
 ## Existing plugins
 
