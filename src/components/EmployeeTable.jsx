@@ -12,10 +12,13 @@ import {
 } from "@mui/material";
 import useEmployeeTable from "../hooks/useEmployeeTable";
 
-const formatDate = (dateString) => {
+const formatDate = (dateString, forSearch = false) => {
   if (!dateString) return "";
   const date = new Date(dateString);
-  return new Intl.DateTimeFormat("fr-FR").format(date);
+  const options = forSearch
+    ? { year: "numeric", month: "2-digit", day: "2-digit" }
+    : undefined;
+  return new Intl.DateTimeFormat("fr-FR", options).format(date);
 };
 
 const EmployeeTableRow = ({ row, columns }) => (
@@ -37,11 +40,13 @@ const EmployeeTable = () => {
   const [searchValue, setSearchValue] = useState("");
 
   const filteredRows = rowData.filter((row) =>
-    Object.keys(row).some(
-      (key) =>
-        row[key] &&
-        row[key].toString().toLowerCase().includes(searchValue.toLowerCase())
-    )
+    Object.keys(row).some((key) => {
+      let value = row[key];
+      if (key === "dateOfBirth" || key === "startDate") {
+        value = formatDate(value, true);
+      }
+      return value.toString().toLowerCase().includes(searchValue.toLowerCase());
+    })
   );
 
   return (
