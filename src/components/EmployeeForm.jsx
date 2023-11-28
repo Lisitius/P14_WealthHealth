@@ -104,6 +104,7 @@ const EmployeeForm = () => {
               Date of Birth
             </label>
             <DatePicker
+              id="dateOfBirth"
               selected={
                 employeeData.dateOfBirth
                   ? new Date(employeeData.dateOfBirth)
@@ -136,6 +137,7 @@ const EmployeeForm = () => {
               Start Date
             </label>
             <DatePicker
+              id="startDate"
               selected={
                 employeeData.startDate ? new Date(employeeData.startDate) : null
               }
