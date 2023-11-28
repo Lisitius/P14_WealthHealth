@@ -19,16 +19,16 @@ https://regal-bombolone-2a404e.netlify.app/
 
 ## Lighthouse Test
 
-[JQUERY FORM](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_jquery_addpage.png)
-[JQUERY EMPLOYEES](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_jquery_table.png)
-[REACT FORM](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_react_addform.png)
-[REACT EMPLOYEES](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_react_tablepage.png)
+[JQUERY FORM](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_jquery_addpage.png)  
+[JQUERY EMPLOYEES](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_jquery_table.png)  
+[REACT FORM](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_react_addform.png)  
+[REACT EMPLOYEES](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_react_tablepage.png)  
 
 ## Existing plugins
 
-[Mui react table](https://mui.com/material-ui/react-table/)
-[React-modal](https://www.npmjs.com/package/react-modal)
-[React-datepicker](https://www.npmjs.com/package/react-datepicker)
+[Mui react table](https://mui.com/material-ui/react-table/)  
+[React-modal](https://www.npmjs.com/package/react-modal)  
+[React-datepicker](https://www.npmjs.com/package/react-datepicker)  
 
 ## Plugin created
 
