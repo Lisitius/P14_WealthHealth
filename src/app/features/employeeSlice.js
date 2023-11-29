@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { employees as mockEmployees } from "../../mockData/mockEmployee";
 
 const initialState = {
   employeeData: {
@@ -15,11 +16,7 @@ const initialState = {
   formErrors: {},
   isSuccess: false,
   isModalOpen: false,
-  employees: [],
-};
-
-const saveEmployeesToSessionStorage = (employees) => {
-  sessionStorage.setItem("employees", JSON.stringify(employees));
+  employees: mockEmployees,
 };
 
 export const employeeSlice = createSlice({
@@ -49,7 +46,6 @@ export const employeeSlice = createSlice({
     },
     addEmployee: (state, action) => {
       state.employees.push(action.payload);
-      saveEmployeesToSessionStorage(state.employees);
     },
   },
 });

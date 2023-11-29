@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { employees as mockEmployees } from "../mockData/mockEmployee";
+import { useSelector } from "react-redux";
 
 const useEmployeeTable = () => {
   const columns = [
@@ -14,16 +13,8 @@ const useEmployeeTable = () => {
     { headerName: "Zip Code", field: "zipCode", flex: 1 },
   ];
 
-  const [employees, setEmployees] = useState([]);
+  const employees = useSelector((state) => state.employee.employees);
 
-  useEffect(() => {
-    const storedEmployees =
-      JSON.parse(sessionStorage.getItem("employees")) || [];
-    const combinedEmployees = [
-      ...new Set([...storedEmployees, ...mockEmployees]),
-    ];
-    setEmployees(combinedEmployees);
-  }, []);
   return {
     columns,
     rowData: employees,
