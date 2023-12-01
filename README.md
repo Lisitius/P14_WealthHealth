@@ -7,6 +7,12 @@
 [![Redux Toolkit](https://img.shields.io/badge/ReduxToolkit-1.9.7-purple)](https://redux-toolkit.js.org/)
 [![Tailwind](https://img.shields.io/badge/Tailwind-3.3.3-blue)](https://tailwindcss.com/)
 
+## Prerequisites
+
+Node version 18.16.1  
+Npm version 9.8.0  
+Editor : VS code
+
 ## Demo
 
 https://regal-bombolone-2a404e.netlify.app/
@@ -20,16 +26,16 @@ https://regal-bombolone-2a404e.netlify.app/
 ## Lighthouse Test
 
 [JQUERY FORM](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_jquery_addpage.png)  
-[JQUERY EMPLOYEES](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_jquery_table.png)  
+[JQUERY EMPLOYEES](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_jquery_table.png)
 
 [REACT FORM](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_react_addform.png)  
-[REACT EMPLOYEES](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_react_tablepage.png)  
+[REACT EMPLOYEES](https://github.com/Lisitius/P14_WealthHealth/blob/main/src/assets/lighthouse_react_tablepage.png)
 
 ## Existing plugins
 
 [Mui react table](https://mui.com/material-ui/react-table/)  
 [React-modal](https://www.npmjs.com/package/react-modal)  
-[React-datepicker](https://www.npmjs.com/package/react-datepicker)  
+[React-datepicker](https://www.npmjs.com/package/react-datepicker)
 
 ## Plugin created
 

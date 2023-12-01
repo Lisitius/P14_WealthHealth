@@ -44,6 +44,7 @@ export const employeeSlice = createSlice({
       state.formErrors = {};
       state.isSuccess = false;
     },
+
     addEmployee: (state, action) => {
       state.employees.push(action.payload);
     },
